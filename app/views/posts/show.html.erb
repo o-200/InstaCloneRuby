@@ -1,0 +1,21 @@
+<h1>Posts#show</h1>
+<p>Find me in app/views/posts/show.html.erb</p>
+
+<br>
+<%= @post.title %>
+
+<br>
+<%= @post.body %>
+
+<br>
+<% if @post.image %>
+  <%= image_tag @post.image_url %>
+<% else %>
+  <h2>No photo :C </h2>
+<% end %>
+
+<br>
+<%= link_to "Edit", edit_post_path(@post) %>
+
+<br>
+<%= button_to "Destroy", post_path(@post), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
