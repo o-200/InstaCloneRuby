@@ -11,6 +11,12 @@
     <%= form.text_area :body %>
   </div>
 
+   <p>
+    <%= form.label :user_id %><br>
+    <%= current_user %>
+    <%= form.hidden_field :user_id %>
+  </p>
+
   <div>
     <%= form.label :image %><br>
     <%= form.file_field :image %>
