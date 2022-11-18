@@ -1,0 +1,18 @@
+<%= current_user.email %>
+<h1>Posts#index</h1>
+<p>Find me in app/views/posts/index.html.erb</p>
+
+<% @posts.each do |post| %>
+  <p> Post title:
+  <%= link_to post.title, post %>
+
+  <p> Post body:
+  <%= post.body %>
+
+  <p>Post Photo
+  <% if post.image %>
+    <%= image_tag post.image_url %>
+  <% else %>
+    <h2>No photo :C </h2>
+  <% end %>
+<% end %>
