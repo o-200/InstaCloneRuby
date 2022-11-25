@@ -1,20 +1,25 @@
-<%= form_with model: @post do |form| %>
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </div>
+<% if current_user.id == @post.user_id %>
+  <%= form_with model: @post do |form| %>
+    <div>
+      <%= form.label :title %><br>
+      <%= form.text_field :title %>
+    </div>
 
-  <div>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </div>
+    <div>
+      <%= form.label :body %><br>
+      <%= form.text_area :body %>
+    </div>
 
-  <div>
-    <%= form.label :image %><br>
-    <%= form.file_field :image %>
-  </div>
+    <div>
+      <%= form.label :image %><br>
+      <%= form.file_field :image %>
+    </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+<% else %>
+  <h1> You ARE NOT a creator of that post.</h1>
+  <%= link_to "Return", root_path %>
 <% end %>

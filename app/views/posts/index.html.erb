@@ -1,4 +1,7 @@
-<%= current_user.email %>
+<% if current_user %>
+  <%= current_user.email %>
+<% end %>
+
 <h1>Posts#index</h1>
 <p>Find me in app/views/posts/index.html.erb</p>
 
