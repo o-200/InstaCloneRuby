@@ -29,7 +29,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
 
-    if @post.update(post_params)
+    if @post.update(post_params) && @post.user_id == current_user.id
       redirect_to @post
     else
       render :edit, status: :unprocessable_entity
