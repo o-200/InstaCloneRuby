@@ -10,8 +10,15 @@
   </head>
 
   <body>
+
+    <%= link_to "Register",  new_user_registration_path %><br>
+    <%= link_to "Login", new_user_session_path %>
+
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+
+    <%= link_to "New post", new_post_path %><br>
 
     <%= yield %>
   </body>
