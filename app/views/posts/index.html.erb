@@ -18,4 +18,6 @@
   <% else %>
     <h2>No photo :C </h2>
   <% end %>
+
+  <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 <% end %>
