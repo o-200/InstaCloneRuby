@@ -1,2 +1,10 @@
 <%= @user.id %><br>
 <%= @user.email %>
+
+<%= button_to 'Follow', user_followers_relationships_path(@user), method: :post unless @relation.present? %>
+<%= button_to 'Unfollow', followers_relationship_path(@relation.id), method: :delete if @relation.present? %>
+
+<%= @user.followers.count %><br>
+
+<%= @user.followings.count %>
+

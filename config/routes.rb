@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users do
-    resources :followers_relationships, only: [:create]
+    resources :followers_relationships
   end
 
   resources :followers_relationships, only: [:destroy]
