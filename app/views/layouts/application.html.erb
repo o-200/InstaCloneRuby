@@ -12,7 +12,8 @@
   <body>
 
     <%= link_to "Register",  new_user_registration_path %><br>
-    <%= link_to "Login", new_user_session_path %>
+    <%= link_to "Login", new_user_session_path %><br>
+    <%= button_to "sign_out", destroy_user_session_path, method: :delete %>
 
 
     <p class="notice"><%= notice %></p>
