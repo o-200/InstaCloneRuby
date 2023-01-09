@@ -6,9 +6,11 @@
           <div class="card mb-3">
             <div class="row g-0">
               <div class="col-md-4">
-                <div class="ratio" style="width:250px;height:250px;overflow:hidden">
+                <div class="ratio" style="height:250px;overflow:hidden">
                   <% if post.image %>
-                    <%= image_tag post.image_url, class: 'embed-responsive-item img-thumbnail' %>
+                    <%= link_to post do %>
+                      <%= image_tag post.image_url, class: 'embed-responsive-item img-thumbnail' %>
+                    <% end %>
                   <% else %>
                     <h2>No photo :C </h2>
                   <% end %>

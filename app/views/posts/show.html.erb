@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-    </div>
+    <div class="col"></div>
     <div class="col-8">
       <div class="card mb-3">
         <div class="row g-0">
@@ -11,23 +10,30 @@
           <div class="col-md-6">
             <div class="card-body">
               <h5 class="card-title"><%= @post.title %></h5>
+              <hr>
               <p class="card-text"><%= @post.body %></p>
-              <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
-                <% if pre_like %>
-                  <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
-                <% else %>
-                  <%= button_to 'Like', post_likes_path(@post), method: :post %>
-                <% end %>
+              <hr>
               <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+              <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+              <% if pre_like %>
+                <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
+              <% else %>
+                <%= button_to 'Like', post_likes_path(@post), method: :post %>
+              <% end %>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
               <hr>
             </div>
-            <div>
+
+            <div class='card-body'>
+              <% if ((user_signed_in?) && (current_user.id == @post.user_id)) %>
+                <%= link_to "Edit", edit_post_path(@post) %>
+                <%= button_to "Destroy", post_path(@post), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+              <% end %>
               <h2>Add a comment:</h2>
                 <%= form_with model: [ @post, @post.comments.build ] do |form| %>
                   <p>
-                  <%= form.label :user_id %><br>
-                  <%= current_user %>
+
+                  <%= current_user.email %>
                   <%= form.hidden_field :user_id %>
                   </p>
                   <p>
@@ -37,20 +43,14 @@
                   <p>
                   <%= form.submit %>
                   </p>
-                  <% end %>
-                  <% if ((user_signed_in?) && (current_user.id == @post.user_id)) %>
-                    <%= link_to "Edit", edit_post_path(@post) %>
-                    <%= button_to "Destroy", post_path(@post), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-                  <% end %>
+                <% end %>
               </div>
             </div>
           </div>
       </div>
-      <div class="col">
-      </div>
+      <div class="col"></div>
     </div>
-    <div class="col">
-    </div>
+    <div class="col"></div>
   </div>
 </div>
 
