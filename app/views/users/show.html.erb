@@ -1,10 +1,61 @@
-<%= @user.id %><br>
-<%= @user.email %>
-
-<%= button_to 'Follow', user_followers_relationships_path(@user), method: :post unless @relation.present? %>
-<%= button_to 'Unfollow', followers_relationship_path(@relation.id), method: :delete if @relation.present? %>
-
-<%= @user.followers.count %><br>
-
-<%= @user.followings.count %>
-
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      Column
+    </div>
+    <div class="col-8">
+        <div class="card mb-4">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="https://i.imgur.com/710zC3Z.png" style="width:200px;height:200px;overflow:hidden" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title col-12"><%= @user.email %></h5>
+                <div class="container text-center">
+                  <div class="row">
+                    <div class="col-4">
+                      <strong><%= @user.posts.count %></strong>
+                        Posts
+                    </div>
+                    <div class="col-4">
+                      <strong><%= @user.followers.count %></strong>
+                      Followers
+                    </div>
+                    <div class="col-4">
+                      <strong><%= @user.followings.count %></strong>
+                      Followed
+                    </div>
+                  </div>
+                </div>
+                  <% if @relation.present? %>
+                    <%= button_to 'Unfollow', followers_relationship_path(@relation.id), method: :delete %>
+                  <% else %>
+                    <%= button_to 'Follow', user_followers_relationships_path(@user), method: :post %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <% @user.posts.each do |post| %>
+            <div class="col">
+                <div class="ratio" style="width:250px;height:250px;overflow:hidden">
+                <% if post.image %>
+                    <%= image_tag post.image_url, class: 'embed-responsive-item img-thumbnail' %>
+                <% else %>
+                  <h2>No photo :C </h2>
+                <% end %>
+                </div>
+            </div>
+            <% end %>
+            </div>
+          </div>
+          <div class="col">
+            Column
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
