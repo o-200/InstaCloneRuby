@@ -1,27 +1,32 @@
-<h1>New Article</h1>
+<div class="container">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col">
+      <h1>New Article</h1>
+      <%= form_with model: @post do |form| %>
+        <div>
+          <%= form.label :title %><br>
+          <%= form.text_field :title %>
+        </div>
 
-<%= form_with model: @post do |form| %>
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
+        <div>
+          <%= form.label :body %><br>
+          <%= form.text_area :body %>
+        </div>
+
+        <p>
+          <%= form.hidden_field :user_id %>
+        </p>
+
+        <div>
+          <%= form.file_field :image %>
+        </div>
+
+        <div>
+          <%= form.submit %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col"></div>
   </div>
-
-  <div>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </div>
-
-   <p>
-    <%= form.label :user_id %><br>
-    <%= form.hidden_field :user_id %>
-  </p>
-
-  <div>
-    <%= form.label :image %><br>
-    <%= form.file_field :image %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
