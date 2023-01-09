@@ -4,7 +4,6 @@
       Column
     </div>
     <div class="col-8">
-
         <div class="card mb-4">
           <div class="row g-0">
             <div class="col-md-4">
@@ -39,17 +38,17 @@
             </div>
           </div>
           <div class="row row-cols-1 row-cols-md-3 g-4">
-                <% @user.posts.each do |post| %>
-                <div class="col">
-                    <div class="ratio" style="width:250px;height:250px;overflow:hidden">
-                    <% if post.image %>
-                        <%= image_tag post.image_url, class: 'embed-responsive-item img-thumbnail' %>
-                    <% else %>
-                        <h2>No photo :C </h2>
-                    <% end %>
-                    </div>
-                </div>
+            <% @user.posts.each do |post| %>
+            <div class="col">
+                <div class="ratio" style="width:250px;height:250px;overflow:hidden">
+                <% if post.image %>
+                    <%= image_tag post.image_url, class: 'embed-responsive-item img-thumbnail' %>
+                <% else %>
+                  <h2>No photo :C </h2>
                 <% end %>
+                </div>
+            </div>
+            <% end %>
             </div>
           </div>
           <div class="col">
